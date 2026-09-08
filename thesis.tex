@@ -1,0 +1,28 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[degree=doctor,type=academic,fontset=required]{cauthesis}
+\input{thesis-info}
+\addbibresource{bibliography.bib}
+\begin{document}
+\pagestyle{empty}
+\makecover
+\makedeclaration
+\frontmatter
+\input{frontmatter/abstract-zh}
+\input{frontmatter/abstract-en}
+\tableofcontents
+% 图表较少时，可移除下一行；不使用符号表时可移除再下一行。
+\caulistoffiguresandtables
+\input{frontmatter/symbols}
+\mainmatter
+\input{chapters/01-introduction}
+\input{chapters/02-methods}
+\input{chapters/03-results}
+\input{chapters/04-conclusion}
+\caustarchapter{参考文献}
+\printbibliography[heading=none]
+\input{backmatter/acknowledgements}
+\appendix
+\input{backmatter/appendix}
+\input{backmatter/biography}
+\end{document}
