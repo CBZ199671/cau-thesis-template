@@ -1,7 +1,7 @@
 % SPDX-License-Identifier: MIT
 % China Agricultural University graduate thesis template, unofficial.
 \NeedsTeXFormat{LaTeX2e}[2022-06-01]
-\ProvidesClass{cauthesis}[2026/09/08 v0.2.7 CAU graduate thesis template]
+\ProvidesClass{cauthesis}[2026/10/12 v0.2.8 CAU graduate thesis template]
 \RequirePackage{iftex}
 \ifXeTeX\else
   \ClassError{cauthesis}{XeLaTeX is required}{Select XeLaTeX, not pdfLaTeX.}
@@ -266,11 +266,13 @@
   \caufrontchapter{插图和附表清单}%
   \cau@listsubheading{0bp}{插图清单}\@starttoc{lof}%
   \cau@listsubheading{20bp}{附表清单}\@starttoc{lot}}
+% Native Word: one 21bp tab before the Chinese label, two 14bp characters
+% before the English label. Only the first line is indented, not continuations.
 \newcommand\keywordszh[1]{\par\nobreak\vspace{6bp}\begingroup
-  \clubpenalty=\@M\widowpenalty=\@M\noindent
+  \clubpenalty=\@M\widowpenalty=\@M\noindent\hspace*{21bp}%
   {\fontsize{14bp}{20bp}\selectfont\bfseries 关键词：}#1\par\endgroup}
 \newcommand\keywordsen[1]{\par\nobreak\vspace{6bp}\begingroup
-  \clubpenalty=\@M\widowpenalty=\@M\noindent
+  \clubpenalty=\@M\widowpenalty=\@M\noindent\hspace*{28bp}%
   {\fontsize{14bp}{20bp}\selectfont\bfseries Key words: }#1\par\endgroup}
 
 \renewcommand\thefigure{\thechapter-\arabic{figure}}
@@ -307,8 +309,9 @@
 \newcommand\cautablelatin{\fontsize{10.5bp}{13.28bp}\selectfont
   \setbox\@arstrutbox=\hbox{\vrule height17.76bp depth11.12bp width0pt}}
 \AtBeginEnvironment{figure}{\cau@legendfont}
+% Word's note paragraph has a two-character (9bp each) first-line indent.
 \newcommand\tablenote[1]{\par\vspace{3bp}{\raggedright\cau@smallfont
-  \noindent 表注：#1\par}}
+  \noindent\hspace*{18bp}表注：#1\par}}
 \newcommand\figurenote[1]{\par\vspace{3bp}{\centering\cau@legendfont
   \noindent 注：#1\par}}
 
@@ -365,6 +368,14 @@
   {\endlist}
   {\item}
 \defbibheading{bibintoc}[参考文献]{\caustarchapter{#1}}
+% The school asks for an appropriate space before Chinese "and others";
+% its 12bp citation example measures 6bp. Keep bibliography delimiters and
+% English word spaces unchanged. Follow biblatex's punctuation-space protocol.
+\newrobustcmd*{\cau@addandothersspace}{%
+  \unspace\blx@postpunct\nobreak\hskip0.5em\relax
+  \blx@imc@resetpunctfont}
+\DeclareDelimFormat[cite,parencite,textcite,citep,citet,authornumcite,pagescite]{andothersdelim}{%
+  \iffieldequalstr{userf}{chinese}{\cau@addandothersspace}{\addspace}}
 \DeclareDelimFormat[cite,parencite,textcite]{multinamedelim}{，}
 \DeclareDelimFormat[cite,parencite,textcite]{finalnamedelim}{，}
 \AtEveryCitekey{\defcounter{maxnames}{3}\defcounter{minnames}{1}%
@@ -557,9 +568,20 @@
     {\expandafter\cauvertical\expandafter{\cau@title}}
     {\expandafter\cauvertical\expandafter{\cau@spinetitle}}\vfill
   \expandafter\cauvertical\expandafter{\cau@author}\par}
-\newcommand\cau@biographyheading[1]{\par\addvspace{6bp}%
-  {\raggedright\heiti\mdseries\fontsize{14bp}{20bp}\selectfont
-    \noindent #1：\par}\nobreak}
+% Word uses a 28bp first-line indent for these left-aligned labels.
+% At the chapter opening, Word collapses the label's before-space into the
+% chapter after-space. Formal-font calibration: title/label baselines differ
+% by 31.92bp. A fixed 14+6bp line strut removes label-glyph-height variation;
+% its 4.27bp correction applies ONLY to this opening label, not later labels.
+\newcommand\cau@biographyheading[1]{\par
+  {\if@nobreak
+     \vspace{-4.27bp}%
+     \def\cau@biographystrut{\rule[-6bp]{0pt}{20bp}}%
+   \else
+     \addvspace{6bp}\let\cau@biographystrut\relax
+   \fi
+   \raggedright\heiti\mdseries\fontsize{14bp}{20bp}\selectfont
+   \noindent\hspace*{28bp}\cau@biographystrut #1：\par}\nobreak}
 \newcommand\biographyitem[2]{\cau@biographyheading{#1}%
   {\cau@bodyfont\setlength\parindent{24bp}\indent #2\par}}
 % Personal works use real bibliography drivers in a separate reference set.
