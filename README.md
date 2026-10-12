@@ -2,6 +2,8 @@
 
 **CAU Thesis Template · 2025年修订规范 · 适用于2026年 · MIT开源**
 
+[![Open in Overleaf](https://img.shields.io/badge/Overleaf-一键使用-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.8%2Fcau-thesis-template-0.2.8-overleaf.zip&engine=xelatex&main_document=thesis.tex)
+
 面向中国农业大学博士生的中文学位论文 LaTeX 模板。依据《中国农业大学研究生学位论文格式及书写规范（2025年修订）》（研生〔2025〕1号），并参考研究生院提供的官方“2025冬”Word模板制作。该规范自2026年1月1日起施行，本模板适用于按该规范撰写的2026年学位论文。
 
 默认配置为学术博士，同时兼容硕士及专业学位。学校原始文件见[研究生院发布页](https://gradsch1.cau.edu.cn/art/2025/8/13/art_53277_1097893.html)。这是**非官方开源模板**，不代表学校发布或认证；提交前仍须核对所在学院的具体要求。
@@ -15,6 +17,22 @@
 [![中国农业大学博士学位论文LaTeX模板：封面、正文与参考文献预览](preview/overview.png)](preview/thesis-example.pdf)
 
 精简ZIP只含21个写作必需文件，不含脚本、测试、缓存或生成PDF；仓库另附`preview/`，仅用于项目首页展示。开始写作建议下载上方精简ZIP，而不是GitHub自动生成的整个仓库压缩包。
+
+## Overleaf 在线使用
+
+**[一键在 Overleaf 打开](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.8%2Fcau-thesis-template-0.2.8-overleaf.zip&engine=xelatex&main_document=thesis.tex)** · [下载在线预览 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.8/cau-thesis-template-0.2.8-overleaf.zip)
+
+1. 登录Overleaf，点击上方按钮，创建属于你自己的模板副本。
+2. 入口已指定 **XeLaTeX** 和根目录下的 **`thesis.tex`**；首次导入后等待编译完成。若手动上传ZIP，请自行选择这两个设置。
+3. 修改 `thesis-info.tex` 和分章文件即可开始写作；目录、编号及文献由latexmk/Biber处理。此入口是[Overleaf官方ZIP导入功能](https://www.overleaf.com/devs)，不要求连接GitHub账号或开启GitHub同步；副本不会随原仓库自动更新，也不表示模板广场收录。
+
+**在线预览不等于正式提交稿。** 在线包同样只有21个文件，不含个人论文、商业字体、脚本、测试、缓存或预生成PDF。两个入口 `thesis.tex`、`spine.tex` 使用已有的 `fontset=fandol` 开源字体模式，每页保留“PREVIEW ONLY”警示；`latexmkrc` 不固定本地 `build/` 路径，输出由平台管理。将在线包下载到本地编译时，输出为 `thesis.pdf` 或 `spine.pdf`。
+
+在线包与正式版使用相同的 `cauthesis.cls`，不改变字号、边距、行距或标题规则。但是替代字体会影响字形、换行与分页，不能冒充学校要求的宋体、黑体及Times New Roman。正式包、仓库入口和首页正式字体PDF预览均保持不变；`fontset=required` 缺字体时仍明确报错，不会自动降级。
+
+在线协作后，下载源文件到依法取得所需字体的本机，将入口改回 `fontset=required`，重新编译并核对分页；不要通过删除预览警示把替代字体输出当作正式稿，也不要把商业字体上传至公共仓库。
+
+**在线实测（2026-10-12）**：上述链接已在Overleaf真实导入；自动选择 `thesis.tex`、XeLaTeX，在TeX Live 2026环境生成15页PDF，日志为0错误，预览警示可见。保留5项提示：1项替代字体警示、2项上游 `textcite` 宏提示、2项空文献／无引用提示；另有2项Underfull排版信息。本次仅验证空白模板的一键导入和在线编译，不代表正式字体、已填充参考文献、独立书脊或任意长论文已完成云端全量测试；后续首次创建项目时建议选择本次验证的TeX Live 2026。
 
 ## 模板说明
 
