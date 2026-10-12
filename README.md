@@ -2,7 +2,7 @@
 
 **CAU Thesis Template · 2025年修订规范 · 适用于2026年 · MIT开源**
 
-[![Open in Overleaf](https://img.shields.io/badge/Overleaf-一键使用-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.8%2Fcau-thesis-template-0.2.8-overleaf.zip&engine=xelatex&main_document=thesis.tex)
+[![Open in Overleaf](https://img.shields.io/badge/Overleaf-一键使用-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.9%2Fcau-thesis-template-0.2.9-overleaf.zip&engine=xelatex&main_document=thesis.tex)
 
 面向中国农业大学博士生的中文学位论文 LaTeX 模板。依据《中国农业大学研究生学位论文格式及书写规范（2025年修订）》（研生〔2025〕1号），并参考研究生院提供的官方“2025冬”Word模板制作。该规范自2026年1月1日起施行，本模板适用于按该规范撰写的2026年学位论文。
 
@@ -10,7 +10,7 @@
 
 ## PDF预览与下载
 
-**[在线预览排版示例 PDF（13页）](preview/thesis-example.pdf)** · [在线预览空白模板 PDF（15页）](preview/thesis-blank.pdf) · **[下载 v0.2.8 精简模板 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.8/cau-thesis-template-0.2.8-clean.zip)**
+**[在线预览排版示例 PDF（13页）](preview/thesis-example.pdf)** · [在线预览空白模板 PDF（15页）](preview/thesis-blank.pdf) · **[下载 v0.2.9 正式字体精简模板 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.9/cau-thesis-template-0.2.9-clean.zip)**
 
 点击下方预览图，可在GitHub中打开完整示例PDF。图片取自实际编译输出，依次展示封面、图表正文、参考文献；示例内容不构成真实研究成果。
 
@@ -20,23 +20,25 @@
 
 ## Overleaf 在线使用
 
-**[一键在 Overleaf 打开](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.8%2Fcau-thesis-template-0.2.8-overleaf.zip&engine=xelatex&main_document=thesis.tex)** · [下载在线预览 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.8/cau-thesis-template-0.2.8-overleaf.zip)
+**[一键在 Overleaf 打开](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.9%2Fcau-thesis-template-0.2.9-overleaf.zip&engine=xelatex&main_document=thesis.tex)** · [下载在线预览 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.9/cau-thesis-template-0.2.9-overleaf.zip)
 
 1. 登录Overleaf，点击上方按钮，创建属于你自己的模板副本。
 2. 入口已指定 **XeLaTeX** 和根目录下的 **`thesis.tex`**；首次导入后等待编译完成。若手动上传ZIP，请自行选择这两个设置。
 3. 修改 `thesis-info.tex` 和分章文件即可开始写作；目录、编号及文献由latexmk/Biber处理。此入口是[Overleaf官方ZIP导入功能](https://www.overleaf.com/devs)，不要求连接GitHub账号或开启GitHub同步；副本不会随原仓库自动更新，也不表示模板广场收录。
 
-**在线预览不等于正式提交稿。** 在线包同样只有21个文件，不含个人论文、商业字体、脚本、测试、缓存或预生成PDF。两个入口 `thesis.tex`、`spine.tex` 使用已有的 `fontset=fandol` 开源字体模式，每页保留“PREVIEW ONLY”警示；`latexmkrc` 不固定本地 `build/` 路径，输出由平台管理。将在线包下载到本地编译时，输出为 `thesis.pdf` 或 `spine.pdf`。
+**在线预览不等于正式提交稿。** 在线包同样只有21个文件，不含个人论文、商业字体、脚本、测试、缓存或预生成PDF；第一章和文献库只附一条公开校方规范的真实引用用于演示，写作时替换。两个入口 `thesis.tex`、`spine.tex` 使用已有的 `fontset=fandol` 开源字体模式，每页保留“PREVIEW ONLY”警示；`latexmkrc` 不固定本地 `build/` 路径，输出由平台管理。将在线包下载到本地编译时，输出为 `thesis.pdf` 或 `spine.pdf`。
 
-在线包与正式版使用相同的 `cauthesis.cls`，不改变字号、边距、行距或标题规则。但是替代字体会影响字形、换行与分页，不能冒充学校要求的宋体、黑体及Times New Roman。正式包、仓库入口和首页正式字体PDF预览均保持不变；`fontset=required` 缺字体时仍明确报错，不会自动降级。
+在线包与同版本正式包使用相同的 `cauthesis.cls`，不改变字号、边距、行距或标题规则。但是替代字体会影响字形、换行与分页，不能冒充学校要求的宋体、黑体及Times New Roman。正式包和仓库入口仍默认 `fontset=required`，缺字体时明确报错，不会自动降级；首页PDF维持正式字体排版，原v0.2.8下载附件保留。
 
 在线协作后，下载源文件到依法取得所需字体的本机，将入口改回 `fontset=required`，重新编译并核对分页；不要通过删除预览警示把替代字体输出当作正式稿，也不要把商业字体上传至公共仓库。
 
-**在线实测（2026-10-12）**：上述链接已在Overleaf真实导入；自动选择 `thesis.tex`、XeLaTeX，在TeX Live 2026环境生成15页PDF，日志为0错误，预览警示可见。保留5项提示：1项替代字体警示、2项上游 `textcite` 宏提示、2项空文献／无引用提示；另有2项Underfull排版信息。本次仅验证空白模板的一键导入和在线编译，不代表正式字体、已填充参考文献、独立书脊或任意长论文已完成云端全量测试；后续首次创建项目时建议选择本次验证的TeX Live 2026。
+**在线实测（2026-10-12）**：已验证官方ZIP一键导入；项目使用 `thesis.tex`、XeLaTeX和TeX Live 2026。v0.2.9在同一在线项目重新编译，生成15页PDF，面板显示 **All logs 0 / Errors 0 / Warnings 0 / Info 0**；真实示例引用和文后条目已生成，每页预览标记保留。七项旧日志分别通过正确的宏更新接口、分布胶/页眉填充修复、非空的公开规范引用、预览提示转普通说明处理，没有全局屏蔽告警或调高badness阈值。本次为通用预览及一条真实引用的云端验证，不代表正式字体、独立书脊、所有引用组合或任意长论文已完成云端全量测试；后续首次创建项目时建议选择本次验证的TeX Live 2026。
 
 ## 模板说明
 
-当前版本为0.2.8。这是非官方模板，不代表学校认证。PDF明确条款优先；Word仅补充合理且不冲突的细节，不复制破坏对齐、层级或内容区边界的明显格式残留。两种排版引擎不保证任意内容逐像素相同，正式提交仍须符合学院要求。
+当前版本为0.2.9。这是非官方模板，不代表学校认证。PDF明确条款优先；Word仅补充合理且不冲突的细节，不复制破坏对齐、层级或内容区边界的明显格式残留。两种排版引擎不保证任意内容逐像素相同，正式提交仍须符合学院要求。
+
+0.2.9修复封面标签分布和页眉定位盒的Underfull信息，并为上游国标样式的两处宏替换使用正确的更新接口；正式示例封面、正文及文献三页的字符坐标与0.2.8对照，差值为0。主动选择Fandol时写普通说明日志，页面预览警示保留；缺少正式字体仍报错。在线示例补入公开校方规范的引用，避免空文献提示，不插入虚构的研究文献。
 
 0.2.8依据规范第7页示例，将中文引文姓名与“等”之间的间距调整为半个字宽（正文12磅时为6磅），英文“et al.”及文后书目分隔符不变。重新核实原始Word后，恢复关键词、简介栏目和表注的合理首行缩进；作者简介首栏与章标题的基线间距标定为约31.92磅，后续栏目间距不变。验证范围为受影响的正式字体样张及本版预览编译，未重新执行全量回归。
 
@@ -232,4 +234,4 @@ Word表格的“1.1倍”不是固定13.2磅：本机正式字体标定后，中
 
 Windows原生TeX Live 2025、XeLaTeX 0.999997、latexmk 4.86a、biblatex 3.20、Biber 2.20；正式字体为本机SimSun、SimHei、Times New Roman，数学为TeX Gyre Termes Math。原生Word同文样张用于既有几何标定，本轮保留并回归这些尺寸，不声称LaTeX与Word在任意长文本上逐像素一致。
 
-文献回归覆盖本机`gb7714-2015ay 2025/03/03 v1.1t`及隔离加载的`2026/06/10 v1.1x`，后者取自[上游固定提交211af6b](https://github.com/hushidong/biblatex-gb7714-2015/tree/211af6baed61236c1a86dd1a92b97d05edc6fe53)。这不是TeX Live 2026全套环境测试，也不保证未来任意升级；更新biblatex／Biber／国标样式或字体后，应重新检查引用、文献换行和分页。旧样式出现两条上游`textcite`宏已定义提示属于已观察到的提示，不等于未解析引用；实际正文不得存在缺字、引用键、`??`、Overfull或模板报错。
+文献回归覆盖本机`gb7714-2015ay 2025/03/03 v1.1t`及隔离加载的`2026/06/10 v1.1x`，后者取自[上游固定提交211af6b](https://github.com/hushidong/biblatex-gb7714-2015/tree/211af6baed61236c1a86dd1a92b97d05edc6fe53)。这不是TeX Live 2026全套环境测试，也不保证未来任意升级；更新biblatex／Biber／国标样式或字体后，应重新检查引用、文献换行和分页。0.2.9已通过正确的宏更新接口消除两条上游`textcite`重复定义提示，不屏蔽其他告警；实际正文不得存在缺字、引用键、`??`、Overfull或模板报错。

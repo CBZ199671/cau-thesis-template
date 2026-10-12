@@ -1,7 +1,7 @@
 % SPDX-License-Identifier: MIT
 % China Agricultural University graduate thesis template, unofficial.
 \NeedsTeXFormat{LaTeX2e}[2022-06-01]
-\ProvidesClass{cauthesis}[2026/10/12 v0.2.8 CAU graduate thesis template]
+\ProvidesClass{cauthesis}[2026/10/12 v0.2.9 CAU graduate thesis template]
 \RequirePackage{iftex}
 \ifXeTeX\else
   \ClassError{cauthesis}{XeLaTeX is required}{Select XeLaTeX, not pdfLaTeX.}
@@ -51,7 +51,7 @@
   \setCJKmonofont{FandolSong-Regular.otf}
   \setCJKfamilyfont{zhsong}{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]
   \setCJKfamilyfont{zhhei}{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
-  \ClassWarningNoLine{cauthesis}{PREVIEW ONLY: Fandol/Termes do not meet the required font names}
+  \ClassInfo{cauthesis}{PREVIEW ONLY: Fandol/Termes do not meet the required font names; visible page notices remain}
 }{\ClassError{cauthesis}{Invalid fontset option}{Use fontset=required or fontset=fandol.}}}
 \providecommand\songti{\CJKfamily{zhsong}}
 \providecommand\heiti{\CJKfamily{zhhei}}
@@ -166,7 +166,7 @@
       \put(0,4.55){\cau@headtext}%
       \put(-1.5,-4.4){\vbox{\hrule height3bp width\dimexpr\textwidth+3bp\relax
         \kern0.75bp\hrule height0.75bp width\dimexpr\textwidth+3bp\relax}}%
-    \end{picture}\endgroup\fi}%
+    \end{picture}\hfil\endgroup\fi}%
   \let\@evenhead\@oddhead
   \def\@oddfoot{\hbox to\textwidth{\hfil
     \raisebox{\cau@footraise}[0pt][0pt]{\cau@runningfont\thepage}\hfil}}%
@@ -315,6 +315,20 @@
 \newcommand\figurenote[1]{\par\vspace{3bp}{\centering\cau@legendfont
   \noindent 注：#1\par}}
 
+% The upstream AY style intentionally replaces two inherited macros but uses
+% newbibmacro. Use the matching renewal interface within this file only;
+% preserve both definitions and all unrelated diagnostics.
+% biblatex inputs .cbx files with primitive input; use its own file hooks.
+\csappto{blx@filehook@preload@gb7714-2015ay.cbx}{%
+  \let\cau@newbibmacro\newbibmacro
+  \RenewDocumentCommand\newbibmacro{s m}{%
+    \ifboolexpr{(test {\ifstrequal{#2}{textcite}} or
+      test {\ifstrequal{#2}{textcite:postnote}}) and
+      test {\ifcsdef{abx@macro@#2}}}
+      {\IfBooleanTF{#1}{\renewbibmacro*{#2}}{\renewbibmacro{#2}}}
+      {\IfBooleanTF{#1}{\cau@newbibmacro*{#2}}{\cau@newbibmacro{#2}}}}}
+\csappto{blx@filehook@postload@gb7714-2015ay.cbx}{%
+  \let\newbibmacro\cau@newbibmacro}
 \RequirePackage[backend=biber,style=gb7714-2015ay,sorting=gb7714-2015,
   sortlocale=zh__pinyin,gblanorder=chineseahead,gbcitelocal=gb7714-2015,
   gbcitelabel=quanjiao,maxcitenames=3,mincitenames=1,
@@ -477,7 +491,7 @@
 \define@key{cauinfo}{wordmark}{\def\cau@wordmark{#1}}
 \newcommand\thesissetup[1]{\setkeys{cauinfo}{#1}}
 \newcommand\cau@coverrow[2]{\noindent
-  \makebox[49.5mm][s]{#1：}%
+  \makebox[49.5mm][s]{\xeCJKsetup{CJKglue={\hskip 0pt plus 1fill}}#1：}%
   \underline{\parbox[t]{67mm}{\centering\strut#2\strut}}\par\vspace{1.6mm}}
 \newsavebox\cau@coverbox
 \newcommand\makecover{%
