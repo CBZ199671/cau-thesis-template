@@ -91,8 +91,8 @@
 \renewcommand\normalsize{\@setfontsize\normalsize{12bp}{20bp}%
   \abovedisplayskip=10bp plus 2bp minus 2bp
   \belowdisplayskip=10bp plus 2bp minus 2bp
-  \abovedisplayshortskip=6bp plus 2bp
-  \belowdisplayshortskip=6bp plus 2bp}
+  \abovedisplayshortskip=6bp plus 1bp minus 1bp
+  \belowdisplayshortskip=6bp plus 1bp minus 1bp}
 \renewcommand\footnotesize{\@setfontsize\footnotesize{9bp}{14bp}}
 \AtBeginDocument{\normalsize\songti}
 \ifdefstring{\cau@fontset}{fandol}{%
@@ -108,9 +108,24 @@
 \setlength\topskip{19.75bp}
 \setlength\emergencystretch{1em}
 \raggedbottom
-\clubpenalty=10000
-\widowpenalty=10000
-\displaywidowpenalty=10000
+% Float-only pages start at the same safe top as mixed text/float pages.
+% Infinite glue belongs below the contents, never above/between figures.
+\setlength\@fptop{0pt}
+\setlength\@fpsep{8bp plus 1bp minus 1bp}
+\setlength\@fpbot{0pt plus 1fil}
+\renewcommand\topfraction{0.97}
+\renewcommand\bottomfraction{0.90}
+\renewcommand\textfraction{0.03}
+\renewcommand\floatpagefraction{0.96}
+\setcounter{topnumber}{10}
+\setcounter{bottomnumber}{10}
+\setcounter{totalnumber}{20}
+% Discourage isolated lines without making ordinary paragraph/display breaks
+% impossible; an absolute ban can leave a large hole above the footer.
+\clubpenalty=3000
+\widowpenalty=3000
+\displaywidowpenalty=3000
+\predisplaypenalty=10000
 \ctexset{
   chapter={name={第,章},number=\chinese{chapter},
     format=\centering\cau@chapterfont,indent=0pt,
@@ -144,6 +159,17 @@
 % footer-area margin, 9pt type and 18pt line box; center as required by the PDF.
 \newlength\cau@footraise
 \setlength\cau@footraise{3.57bp}
+% Author's PDF acceptance bounds, NOT additional school-mandated margins.
+% Measure last main text/caption baseline -> page-number baseline; exempt
+% chapter-ending pages. These thresholds never stretch text or move footers.
+\newlength\cauminpageclearance
+\newlength\caumaxpageclearance
+\setlength\cauminpageclearance{16bp}
+\setlength\caumaxpageclearance{43bp}
+\newlength\caumintopclearance
+\newlength\caumaxtopclearance
+\setlength\caumintopclearance{2bp}
+\setlength\caumaxtopclearance{20bp}
 \newcommand\cau@runningfont{\normalfont\songti\fontsize{9bp}{18bp}\selectfont}
 \newsavebox\cau@headleft
 \newsavebox\cau@headright
@@ -281,8 +307,23 @@
 \DeclareCaptionFont{cau}{\cau@captionfont}
 \captionsetup{font=cau,labelfont=cau,labelsep=space,
   justification=centering,singlelinecheck=false,skip=6bp}
-\captionsetup[table]{position=top}
-\captionsetup[figure]{position=bottom}
+% Native Word table: caption baseline -> top rule ~4bp. The negative
+% skip compensates the caption strut; visible text and rule remain separated.
+\captionsetup[table]{position=top,skip=-2.7bp,belowskip=3bp}
+\newif\ifcau@hasnote
+\AtBeginEnvironment{table}{\cau@hasnotefalse}
+\AtEndEnvironment{table}{\par
+  \ifcau@hasnote\ifdim\prevdepth>0pt\kern-\prevdepth\fi
+  \else\kern-4.75bp\fi}
+% Native Word: picture edge -> caption baseline ~16.1bp; caption/note
+% baselines are 20bp apart, with no extra paragraph before/after spacing.
+\captionsetup[figure]{position=bottom,skip=2bp,belowskip=0bp}
+\setlength\textfloatsep{0bp}
+\setlength\intextsep{2bp}
+% End the figure's layout box on its last text baseline. The glyph descenders
+% remain visible; the following ordinary 20bp line provides their clearance.
+% This avoids adding caption-strut depth a second time at the float boundary.
+\AtEndEnvironment{figure}{\par\ifdim\prevdepth>0pt\kern-\prevdepth\fi}
 \setlength\heavyrulewidth{1.5bp}
 \setlength\lightrulewidth{0.75bp}
 \setlength\cmidrulewidth{0.75bp}
@@ -310,9 +351,10 @@
   \setbox\@arstrutbox=\hbox{\vrule height17.76bp depth11.12bp width0pt}}
 \AtBeginEnvironment{figure}{\cau@legendfont}
 % Word's note paragraph has a two-character (9bp each) first-line indent.
-\newcommand\tablenote[1]{\par\vspace{3bp}{\raggedright\cau@smallfont
+% Lower rule -> note baseline ~16bp; note -> body baseline ~20bp.
+\newcommand\tablenote[1]{\cau@hasnotetrue\par\vspace{7.5bp}{\raggedright\cau@smallfont
   \noindent\hspace*{18bp}表注：#1\par}}
-\newcommand\figurenote[1]{\par\vspace{3bp}{\centering\cau@legendfont
+\newcommand\figurenote[1]{\par{\centering\cau@legendfont
   \noindent 注：#1\par}}
 
 % The upstream AY style intentionally replaces two inherited macros but uses
