@@ -2,17 +2,19 @@
 
 **CAU Thesis Template · 2025年修订规范 · 适用于2026年 · MIT开源**
 
-[![Open in Overleaf](https://img.shields.io/badge/Overleaf-一键使用-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.9%2Fcau-thesis-template-0.2.9-overleaf.zip&engine=xelatex&main_document=thesis.tex)
+[![Open in Overleaf](https://img.shields.io/badge/Overleaf-一键使用-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.10%2Fcau-thesis-template-0.2.10-overleaf.zip&engine=xelatex&main_document=thesis.tex)
 
 面向中国农业大学博士生的中文学位论文 LaTeX 模板。依据《中国农业大学研究生学位论文格式及书写规范（2025年修订）》（研生〔2025〕1号），并参考研究生院提供的官方“2025冬”Word模板制作。该规范自2026年1月1日起施行，本模板适用于按该规范撰写的2026年学位论文。
 
 默认配置为学术博士，同时兼容硕士及专业学位。学校原始文件见[研究生院发布页](https://gradsch1.cau.edu.cn/art/2025/8/13/art_53277_1097893.html)。这是**非官方开源模板**，不代表学校发布或认证；提交前仍须核对所在学院的具体要求。
 
+**v0.2.10（2026-10-26）**：新增两种参考文献格式，可用`bibstyle=authoryear`（默认校级细则）或`bibstyle=numeric`（信电学院通知）自由切换，具体选择按本院要求。切换示例见下方“文献引用”。本次验证两种模式的定点样张；未重跑全文排版或云端全量测试。
+
 ## PDF预览与下载
 
-**[在线预览排版示例 PDF（13页）](preview/thesis-example.pdf)** · [在线预览空白模板 PDF（15页）](preview/thesis-blank.pdf) · **[下载 v0.2.9 正式字体精简模板 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.9/cau-thesis-template-0.2.9-clean.zip)**
+**[在线预览排版示例 PDF（13页）](preview/thesis-example.pdf)** · [在线预览空白模板 PDF（15页）](preview/thesis-blank.pdf) · **[下载 v0.2.10 正式字体精简模板 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.10/cau-thesis-template-0.2.10-clean.zip)**
 
-点击下方预览图，可在GitHub中打开完整示例PDF。图片取自实际编译输出，依次展示封面、图表正文、参考文献；示例内容不构成真实研究成果。
+下方PDF及预览图保留v0.2.9的著者—出版年制排版示例；新版下载包支持两种模式。点击预览图，可在GitHub中打开完整示例PDF。图片取自实际编译输出，依次展示封面、图表正文、参考文献；示例内容不构成真实研究成果。
 
 [![中国农业大学博士学位论文LaTeX模板：封面、正文与参考文献预览](preview/overview.png)](preview/thesis-example.pdf)
 
@@ -20,7 +22,7 @@
 
 ## Overleaf 在线使用
 
-**[一键在 Overleaf 打开](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.9%2Fcau-thesis-template-0.2.9-overleaf.zip&engine=xelatex&main_document=thesis.tex)** · [下载在线预览 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.9/cau-thesis-template-0.2.9-overleaf.zip)
+**[一键在 Overleaf 打开](https://www.overleaf.com/docs?snip_uri=https%3A%2F%2Fgithub.com%2FCBZ199671%2Fcau-thesis-template%2Freleases%2Fdownload%2Fv0.2.10%2Fcau-thesis-template-0.2.10-overleaf.zip&engine=xelatex&main_document=thesis.tex)** · [下载在线预览 ZIP](https://github.com/CBZ199671/cau-thesis-template/releases/download/v0.2.10/cau-thesis-template-0.2.10-overleaf.zip)
 
 1. 登录Overleaf，点击上方按钮，创建属于你自己的模板副本。
 2. 入口已指定 **XeLaTeX** 和根目录下的 **`thesis.tex`**；首次导入后等待编译完成。若手动上传ZIP，请自行选择这两个设置。
@@ -36,7 +38,7 @@
 
 ## 模板说明
 
-当前版本为0.2.9。这是非官方模板，不代表学校认证。PDF明确条款优先；Word仅补充合理且不冲突的细节，不复制破坏对齐、层级或内容区边界的明显格式残留。两种排版引擎不保证任意内容逐像素相同，正式提交仍须符合学院要求。
+当前版本为0.2.10。这是非官方模板，不代表学校认证。PDF明确条款优先；Word仅补充合理且不冲突的细节，不复制破坏对齐、层级或内容区边界的明显格式残留。两种排版引擎不保证任意内容逐像素相同，正式提交仍须符合学院要求。
 
 0.2.9修复封面标签分布和页眉定位盒的Underfull信息，并为上游国标样式的两处宏替换使用正确的更新接口；正式示例封面、正文及文献三页的字符坐标与0.2.8对照，差值为0。主动选择Fandol时写普通说明日志，页面预览警示保留；缺少正式字体仍报错。在线示例补入公开校方规范的引用，避免空文献提示，不插入虚构的研究文献。
 
@@ -54,9 +56,9 @@
 
 “Word里存在某属性”不等于“学校要求这个属性”。字号、字重和标题内部必要字间距保留；正文缩进误带入居中标题、靠空段挤页码等编辑残留不复制。不得仅因个人审美更改PDF明文要求。
 
-声明、摘要、Abstract、目录、图表清单和符号表标题按版芯居中；一级标题居中，二三级标题左对齐且不继承正文首行缩进。关键词、简介栏目及表注是左对齐段落，不应与居中标题的错误缩进一概而论：中文关键词首行缩进21磅，英文关键词及简介栏目首行缩进28磅，表注首行缩进18磅，续行均回到所在文本区域左侧。正文与简介内容仍保留24磅首行缩进，参考文献各行齐左。这四处数值来自官方Word的合理排版细节，不冒称PDF明文要求。窄表的表注若需限制在表格宽度内，请把表格和表注放在同宽的`minipage`中，首行仍在该区域内缩进18磅。
+声明、摘要、Abstract、目录、图表清单和符号表标题按版芯居中；一级标题居中，二三级标题左对齐且不继承正文首行缩进。关键词、简介栏目及表注是左对齐段落，不应与居中标题的错误缩进一概而论：中文关键词首行缩进21磅，英文关键词及简介栏目首行缩进28磅，表注首行缩进18磅，续行均回到所在文本区域左侧。正文与简介内容仍保留24磅首行缩进，著者—出版年制参考文献各行齐左。这四处数值来自官方Word的合理排版细节，不冒称PDF明文要求。窄表的表注若需限制在表格宽度内，请把表格和表注放在同宽的`minipage`中，首行仍在该区域内缩进18磅。
 
-居中基准是版芯而非整张纸：左30mm、右25mm，版芯中线距纸张左边107.5mm；不要人为左移2.5mm抵消它。正文、目录层级和签名区缩进不全局清零；参考文献列表单独采用各行齐左。
+居中基准是版芯而非整张纸：左30mm、右25mm，版芯中线距纸张左边107.5mm；不要人为左移2.5mm抵消它。正文、目录层级和签名区缩进不全局清零；著者—出版年制参考文献列表单独采用各行齐左。
 
 ## 开始写作
 
@@ -224,6 +226,48 @@ Word表格的“1.1倍”不是固定13.2磅：本机正式字体标定后，中
 
 ## 文献引用
 
+### 选择参考文献格式
+
+模板提供两种可自由切换的 GB/T 7714—2015 格式。请按所在学院适用通知选择；“可自由选择”指模板功能，不代表可以忽略学院要求。
+
+| 类选项 | 适用依据 | 正文标注与文后排序 |
+| --- | --- | --- |
+| `bibstyle=authoryear`（默认） | 学校《格式及书写规范（2025年修订）》第7页 | 作者、年份；中文在前，外文在后，各组按作者排序，无编号 |
+| `bibstyle=numeric` | 信息与电气工程学院[2026年下半年学位授予通知](https://ciee.cau.edu.cn/art/2026/7/13/art_50390_1122137.html)“六、其他”第2项 | 方括号数字；按正文首次引用顺序统一编号，不分中外文 |
+
+在 `thesis.tex` 的类选项中任选一项，其他选项照常保留：
+
+```latex
+% 学校细则：著者—出版年制（不写bibstyle时也采用此项）
+\documentclass[degree=doctor,type=academic,fontset=required,bibstyle=authoryear]{cauthesis}
+
+% 信息与电气工程学院通知：顺序编码制
+\documentclass[degree=doctor,type=academic,fontset=required,bibstyle=numeric]{cauthesis}
+```
+
+两行不能同时启用。修改后重新运行 XeLaTeX → Biber → XeLaTeX → XeLaTeX，或使用 `latexmk -xelatex thesis.tex`；Overleaf使用“Recompile from scratch”。无需改写 `.bib` 数据或现有引用键；若旧稿手写作者、括号并配合`\citeyear*`，须先将这种引用标注改为标准引用命令，单独切换样式不会自动替换手写文字。旧版v0.2.9及更早的发布包没有此选项，请使用v0.2.10及以后的类文件。
+
+学院通知仅替换参考文献格式，其他论文版式仍按2025修订规范执行；此要求不自动扩展到其他学院。学院通知原文中的标准号有排印重复，本模板按《信息与文献 参考文献著录规则》GB/T 7714—2015实现。
+
+### 顺序编码制：`bibstyle=numeric`
+
+使用上游 `gb7714-2015` 样式和 `sorting=none`：正文与文献表共享编号，重复引用沿用原编号，连续编号按样式压缩。文献表为五号宋体（西文及数字Times New Roman），固定20磅行距；`[1]`等序号左对齐，续行与条目正文对齐。作者、题名、文献类型、出版年、卷期和页码的位置由顺序编码制样式处理，不套用著者—出版年制的定制规则。
+
+```latex
+相关研究\parencite{文献键一}。              % 上标 [1]
+相关研究\cite{文献键一,文献键二}。         % 上标编号，自动排序/压缩
+引文\parencite[16]{文献键一}。             % 编号方括号外附上标页码
+\textcite{文献键一}提出……                 % 作者 + 行内 [1]
+\authornumcite{文献键一}提出……            % 作者 + 上标 [1]
+\parencites[16]{文献键一}[28]{文献键二}     % 各组编号与页码分别对应
+```
+
+`\cite`、`\parencite`在此模式均输出上标编号，便于原稿直接切换；`\textcite`保留叙述作者并使用行内编号。不要用手写序号或`\cite*`、`\parencite*`等仅年份形式代替编号引用。`.bib`仍按真实出版语言填写`language`；数字模式不会按语言重排。作者简介的`\biographypublications`仍是独立引用区段，单独从`[1]`编号，不改变正文参考文献的编号与引用集合。
+
+### 著者—出版年制：`bibstyle=authoryear`
+
+以下作者姓名、年份、分号、消歧字母和各行齐左规则仅适用于此模式。
+
 在 `bibliography.bib` 填入实际阅读并核实的文献，并按**实际出版语言**填写 `language`：中文用`chinese`，英文用`english`，其他语言使用对应名称。`langid`不能单独可靠地控制本样式的中文／外文分组，作者国籍、中文姓名或英文题名也不能代替出版语言。以下只是字段示意，须替换成真实元数据：
 
 ```bibtex
@@ -254,7 +298,7 @@ Word表格的“1.1倍”不是固定13.2磅：本机正式字体标定后，中
 
 已适配并测试的常用别名还有`\autocite`、`\autocites`、`\citep`、`\citet`、`\citets`、`\authornumcite`及`\authornumcites`；`\cite*`与`\parencite*`是仅输出年份的形式，只在上下文已写明作者时使用。复数命令支持每组前置说明；整组定位符与逐组页码不能同时使用，避免相邻上标被误读成一个页码，混用会明确报错。`\footcite`、`\smartcite`、`\pagescite`、`\upcite`等其他继承命令及其变体不属于本模板已适配的校级引用接口，提交正文请使用上述已测试命令，不凭其能编译判断格式合规。
 
-本模板采用校级规定的GB/T 7714—2015著者—出版年制：中文先，所有外文合为一组在后，各组按作者排序；引用至多三名作者时全列，超过三名用首位加“等／et al.”；多篇逐篇用分号分隔，不压缩同作者的姓名或年份，同年区分a、b，页码置于括号外上标。多音姓氏及非拉丁文字作者的A—Z排序需人工核实，必要时填写罗马化的 `sortname`，不改动真实作者字段。
+本模式采用校级规定的GB/T 7714—2015著者—出版年制：中文先，所有外文合为一组在后，各组按作者排序；引用至多三名作者时全列，超过三名用首位加“等／et al.”；多篇逐篇用分号分隔，不压缩同作者的姓名或年份，同年区分a、b，页码置于括号外上标。多音姓氏及非拉丁文字作者的A—Z排序需人工核实，必要时填写罗马化的 `sortname`，不改动真实作者字段。
 
 参考文献表为五号（10.5磅），不加`[1]、[2]`等顺序编码；每条文献的首行及第二、第三行均齐版芯左边，无首行或悬挂缩进。校级PDF第7页明确著者—出版年制，示例无数字序号；官方Word参考文献填写区清除了首行缩进。0.2.5、0.2.6额外选择的21磅悬挂在本版撤销。列表几何由模板控制，不依赖上游`bibitemindent`在不同版本中的不同语义。
 
@@ -269,9 +313,9 @@ Word表格的“1.1倍”不是固定13.2磅：本机正式字体标定后，中
 \biographypublications{研究生期间申请的专利}{专利键一}
 ```
 
-成果元数据仍写入已加载的`.bib`数据库。此命令自动复用主参考文献的五号字体、各行齐左、著录规则及条目终止标点；每次调用建立独立引用区段，未在正文引用的个人成果不会因此进入全文参考文献。各区段独立排序和消歧，字母不保证与另一区段一致。基本介绍、教育经历、科研项目等普通简介仍使用`\biographyitem`，保持小四号正文。未适配的通用`\fullcite`不等同于正式成果列表。
+成果元数据仍写入已加载的`.bib`数据库。此命令自动复用所选参考文献模式的五号字体、列表格式、著录规则及条目终止标点；每次调用建立独立引用区段，未在正文引用的个人成果不会因此进入全文参考文献。各区段独立排序和消歧，字母不保证与另一区段一致。基本介绍、教育经历、科研项目等普通简介仍使用`\biographyitem`，保持小四号正文。未适配的通用`\fullcite`不等同于正式成果列表。
 
-学院可能另有要求。例如[信电学院2026年下半年通知](https://ciee.cau.edu.cn/art/2026/7/13/art_50390_1122137.html)规定顺序编码制。此模板保留校级基线，未擅自将学院特例应用于全校；使用前请核对本院要求。
+信电学院通知要求顺序编码制，请选择上面的`bibstyle=numeric`；其他学院按各自适用要求选择。
 
 ## 提交、装订与许可
 

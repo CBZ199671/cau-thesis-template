@@ -1,7 +1,7 @@
 % SPDX-License-Identifier: MIT
 % China Agricultural University graduate thesis template, unofficial.
 \NeedsTeXFormat{LaTeX2e}[2022-06-01]
-\ProvidesClass{cauthesis}[2026/10/12 v0.2.9 CAU graduate thesis template]
+\ProvidesClass{cauthesis}[2026/10/26 v0.2.10 CAU graduate thesis template]
 \RequirePackage{iftex}
 \ifXeTeX\else
   \ClassError{cauthesis}{XeLaTeX is required}{Select XeLaTeX, not pdfLaTeX.}
@@ -11,9 +11,14 @@
 \DeclareStringOption[doctor]{degree}
 \DeclareStringOption[academic]{type}
 \DeclareStringOption[required]{fontset}
+\DeclareStringOption[authoryear]{bibstyle}
 \ProcessKeyvalOptions*
 \LoadClass[UTF8,a4paper,zihao=-4,fontset=none,oneside,openany]{ctexbook}
 \RequirePackage{etoolbox}
+\newif\ifcau@numeric
+\ifdefstring{\cau@bibstyle}{authoryear}{}{%
+  \ifdefstring{\cau@bibstyle}{numeric}{\cau@numerictrue}{%
+    \ClassError{cauthesis}{Invalid bibstyle option}{Use bibstyle=authoryear or bibstyle=numeric.}}}
 \ifdefstring{\cau@degree}{doctor}{\def\cau@level{博士}}{%
   \ifdefstring{\cau@degree}{master}{\def\cau@level{硕士}}{%
     \ClassError{cauthesis}{Invalid degree option}{Use degree=doctor or degree=master.}}}
@@ -371,6 +376,25 @@
       {\IfBooleanTF{#1}{\cau@newbibmacro*{#2}}{\cau@newbibmacro{#2}}}}}
 \csappto{blx@filehook@postload@gb7714-2015ay.cbx}{%
   \let\newbibmacro\cau@newbibmacro}
+% Two independent GB/T 7714-2015 schemes; AY customizations stay in AY only.
+\ifcau@numeric
+\RequirePackage[backend=biber,style=gb7714-2015,sorting=none,
+  gbcitelocal=gb7714-2015,gbcitelabel=bracket,gbalign=left,
+  maxbibnames=3,minbibnames=3,gbnamefmt=uppercase,
+  doi=true,url=true,isbn=false]{biblatex}
+\renewcommand\bibfont{\cau@legendfont}
+\setlength\bibitemsep{0pt}
+\defbibheading{bibintoc}[参考文献]{\caustarchapter{#1}}
+% Preserve existing thesis calls: cite/parencite both give superscript [n].
+% Use the numeric style's compression and page-note handling.
+\DeclareCiteCommand{\parencite}[\mkbibsuperscript]
+  {\mkbibleftborder\usebibmacro{cite:init}\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}\usebibmacro{cite:comp}}
+  {}
+  {\usebibmacro{cite:dump}\mkbibrightborder\printfield{postnote}}
+\DeclareMultiCiteCommand{\parencites}[\mkbibsuperscript]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\cites}[\mkbibsuperscript]{\cite}{\multicitedelim}
+\else
 \RequirePackage[backend=biber,style=gb7714-2015ay,sorting=gb7714-2015,
   sortlocale=zh__pinyin,gblanorder=chineseahead,gbcitelocal=gb7714-2015,
   gbcitelabel=quanjiao,maxcitenames=3,mincitenames=1,
@@ -499,6 +523,7 @@
 \DeclareMultiCiteCommand{\textcites}[\cau@multicite]{\textcite}{\multicitedelim}
 \DeclareMultiCiteCommand{\citets}[\cau@multicite]{\citet}{\multicitedelim}
 \DeclareMultiCiteCommand{\authornumcites}[\cau@multicite]{\authornumcite}{\multicitedelim}
+\fi % bibstyle
 
 % Editable metadata is deliberately separate from all page styling.
 \def\cau@title{学位论文中文题目}
